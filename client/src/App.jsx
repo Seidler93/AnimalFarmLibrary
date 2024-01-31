@@ -1,18 +1,9 @@
 import { useEffect, useState } from 'react';
+import Animal from './components/Animal';
 
 function App() {
   const [animals, setAnimals] = useState([])
-  // const { search, animals } = useAnimalSearch();
-
-  // Component for each animal
-  function Animal({ type, name, age }) {
-    return (
-      <li>
-        <strong>{type}</strong> {name} ({age} years old)
-      </li>
-    );
-  }
-
+ 
   const search = async (q) => {
     const response = await fetch(
       'http://localhost:8080?' + new URLSearchParams({ q })
@@ -37,14 +28,10 @@ function App() {
         placeholder="Search"
         onChange={(e) => search(e.target.value)}
       />
-
-      <ul>
         {animals.map((animal) => (
           <Animal key={animal.id} {...animal} />
         ))}
-
         {animals.length === 0 && 'No animals found'}
-      </ul>
     </main>
   );
 }
