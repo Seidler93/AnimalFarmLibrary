@@ -29,4 +29,5 @@ app.get('', (req, res) => {
 
 });
 
+// Start Server
 app.listen(8080, () => console.log('Listening on port http://localhost:8080'));
